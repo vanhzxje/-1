@@ -1,0 +1,77 @@
+ /* Style Cho Ca Trang */
+body {
+    font-family: cursive, sans-serif;/* Dat Font Chu La Cursiva */
+    display: flex; /* Dung Flex De Sap Xep Giao Dien */
+    justify-content: center; /* Can Giua Theo Chieu Ngang */
+    align-items: center; /* Can Giua Theo Chieu Doc */
+    flex-direction: column; /* Sap Xep Phan Tu Con Theo Cot */
+    background-color: #000000;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    border: 2px solid lightpink;
+    box-shadow: 0 0 20px rgba(255, 0, 127, 0.8); /* Ánh sáng hồng bao quanh */
+    /*border-radius: 12px;*/
+}
+.video-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh; /* Căn giữa theo cả chiều ngang và dọc */
+    position: relative;
+    z-index: 10; /* Đảm bảo video nằm trên các hiệu ứng nền */
+}
+
+.video-container iframe {
+    width: 80%; /* Tùy chỉnh theo ý muốn */
+    max-width: 560px;
+    height: auto;
+}
+
+.banner {
+    width: 100%; /* Chieu Rong Cua Toan Bo Trang */
+    height: 725px; /* Chieu Cao 300px */
+    background-image: url('https://nino.is-a.dev/Valentine_UwU/assets/images/Couple.jpg');
+    background-size: cover; /* Hinh Anh Bao Phu Toan Bo Banner */
+    background-position: center; /* Can Giua Hinh Anh Trong Banner */
+    display: flex; /* Dung Flexbox De Sap Xep Giao Dien */
+    align-items: center; /* Can Giua Noi Dung Theo Chieu Doc */
+    justify-content: center; /* Can Giua Noi Dung Theo Chieu Ngang */
+    filter: blur(10px);
+}
+
+.couter {
+    background: linear-gradient(to right, #ff7ce0, #6da1f2); /* Chuyen Mau Tu Hong Sang Xanh */
+    color: white; /* Chu Mau Trang */
+    padding: 10px 30px; /* Khoang Trang Giua Tren Va Duoi La 10px, Trai Va Phai La 30px */
+    border-radius: 10px; /* Bo Tron Cac Goc Ban Kinh 10px */
+    font-size: 30px; /* Co Chu 30px */
+    font-weight: bold; /* Chu Im Dam */
+    display: inline-block; /* Dat Kich Thuoc Theo Noi Dung */
+}
+
+.profile { /* Style Chung Cho 2 User */
+    display: flex;
+    align-items: center;
+    margin: 20px
+}
+
+.profile .card { /* Rieng Cho Tung User */
+    text-align: center; /* Can Giua */
+    padding: 0 20px;
+}
+
+.profile .img {
+    width: 20%;
+    height: 20%;
+    border-radius: 50%; /* Lam Tron Anh */
+    border: 4px solid pink; /* Vien Mau Hong */
+}
+
+.heart {
+    font-size: 40px;
+    color: red;
+    padding: 10px 30px;
+}
+
