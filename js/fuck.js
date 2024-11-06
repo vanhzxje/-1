@@ -16,24 +16,36 @@
         });
     });
 
-    function encodeHTMLContent() {
-        const body = document.body;
-        body.innerHTML = btoa(body.innerHTML);
+    function generateRandomHex(length) {
+        let result = '';
+        const characters = '0123456789abcdef';
+        for (let i = 0; i < length; i++) {
+            result += characters.charAt(Math.floor(Math.random() * characters.length));
+        }
+        return result;
     }
 
-    document.addEventListener("keydown", function(event) {
-        if (event.key === "F12") {
-            encodeHTMLContent(); 
-        }
-    });
+    function obfuscateImportantElements() {
+        const elements = document.querySelectorAll('.pace-progress, .pace-progress-inner');
+        elements.forEach(element => {
+            element.className = 'pace-progress ' + generateRandomHex(20);
+            element.setAttribute('data-progress-text', '100%');
+            element.setAttribute('data-progress', '99');
+        });
+    }
 
-    function detectDevTools() {
+    let devtoolsOpen = false;
+    const detectDevTools = () => {
         const widthThreshold = window.outerWidth - window.innerWidth > 100;
         const heightThreshold = window.outerHeight - window.innerHeight > 100;
         if (widthThreshold || heightThreshold) {
-            encodeHTMLContent();
+            if (!devtoolsOpen) {
+                devtoolsOpen = true;
+                obfuscateImportantElements();
+            }
+        } else {
+            devtoolsOpen = false;
         }
-    }
-
+    };
     setInterval(detectDevTools, 500);
     window.addEventListener('resize', detectDevTools);
