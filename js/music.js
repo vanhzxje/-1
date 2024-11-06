@@ -1,3 +1,24 @@
+    class O {
+        constructor() {
+            this.o = Array.from({
+                length: 20
+            }, () => '\\x' + Math.floor(Math.random() * 16).toString(16) + Math.floor(Math.random() * 16).toString(16)).join('');
+        }
+    }
+    (($) => {
+        const o = new O();
+        $('*').each(function() { // Sài * Tức Là Root (Chọn Tất Cả Thẻ HTML)
+            $(this).addClass(o.o);
+        });
+    })(jQuery);
+    setInterval(() => $('#real-time').text(new Date().toLocaleTimeString()), 1000);
+    function ShowToast() {
+        x.addClass('show');
+        setTimeout(function(){ x.removeClass('show'); }, 5000);
+    }      
+    var x = $('#Toast');
+    x.html('Resources Code V5.0.0');
+
 const musicFiles = [
     '../music/1.mp3',
     '../music/2.mp3',
