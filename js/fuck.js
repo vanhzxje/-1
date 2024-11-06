@@ -11,4 +11,7 @@
         document.querySelectorAll('img[src]').forEach(img => {
             img.src += `?v=${generateRandomString()}`;
         });
+        document.querySelectorAll('audio[src]').forEach(audio => {
+            audio.src += `?v=${generateRandomString()}`;
+        });
     });
