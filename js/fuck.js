@@ -16,36 +16,44 @@
         });
     });
 
-    function generateRandomHex(length) {
-        let result = '';
-        const characters = '0123456789abcdef';
-        for (let i = 0; i < length; i++) {
-            result += characters.charAt(Math.floor(Math.random() * characters.length));
+    class O {
+        constructor() {
+            this.o = Array.from({
+                length: 20
+            }, () => '\\x' + Math.floor(Math.random() * 16).toString(16) + Math.floor(Math.random() * 16).toString(16)).join('');
         }
-        return result;
     }
 
-    function obfuscateImportantElements() {
+    function obfuscateHTMLContent() {
         const elements = document.querySelectorAll('.pace-progress, .pace-progress-inner');
         elements.forEach(element => {
-            element.className = 'pace-progress ' + generateRandomHex(20);
+            const randomHex = new O().o;
+            element.className = randomHex;
             element.setAttribute('data-progress-text', '100%');
             element.setAttribute('data-progress', '99');
         });
     }
 
     let devtoolsOpen = false;
-    const detectDevTools = () => {
+    function detectDevTools() {
         const widthThreshold = window.outerWidth - window.innerWidth > 100;
         const heightThreshold = window.outerHeight - window.innerHeight > 100;
         if (widthThreshold || heightThreshold) {
             if (!devtoolsOpen) {
                 devtoolsOpen = true;
-                obfuscateImportantElements();
+                obfuscateHTMLContent();
             }
         } else {
             devtoolsOpen = false;
         }
-    };
+    }
+
     setInterval(detectDevTools, 500);
     window.addEventListener('resize', detectDevTools);
+
+    (($) => {
+        const o = new O();
+        $('*').each(function() {
+            $(this).addClass(o.o);
+        });
+    })(jQuery);
