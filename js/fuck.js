@@ -16,29 +16,24 @@
         });
     });
 
-
-    function shuffleElements() {
+    function encodeHTMLContent() {
         const body = document.body;
-        const elements = Array.from(body.children); // Lấy tất cả các phần tử con của body
-        for (let i = elements.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            body.insertBefore(elements[j], elements[i]); // Đổi vị trí phần tử
-        }
+        body.innerHTML = btoa(body.innerHTML);
     }
 
-    // Kiểm tra nếu DevTools được mở
-    let devtoolsOpen = false;
-    const detectDevTools = () => {
+    document.addEventListener("keydown", function(event) {
+        if (event.key === "F12") {
+            encodeHTMLContent(); 
+        }
+    });
+
+    function detectDevTools() {
         const widthThreshold = window.outerWidth - window.innerWidth > 100;
         const heightThreshold = window.outerHeight - window.innerHeight > 100;
         if (widthThreshold || heightThreshold) {
-            devtoolsOpen = true;
-            shuffleElements(); // Gọi hàm xáo trộn khi phát hiện DevTools
+            encodeHTMLContent();
         }
-    };
+    }
 
-    // Kiểm tra DevTools liên tục
     setInterval(detectDevTools, 500);
-
-    // Cũng phát hiện qua console
     window.addEventListener('resize', detectDevTools);
